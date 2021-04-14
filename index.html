@@ -18,23 +18,27 @@
         <div id="app">
             <h1 v-cloak class="card mt-5"><u>{{greetings}}</u></h1>
         </div>
+        <span id="fact">
+            <p v-cloak>{{catfact}}</p>
+        </span>
     </head>
     <body>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script>
             var vm = new Vue({
                 el: '#app',
                 data: {
                     greetings: "This is the Vue.js version of the cat facts API Project"
-                },
+                }
                 methods: {
-                    fetchFact:  async function() {
-                        const api_url = 'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1';
-
-                    }
                 }
             })
+            axios.get('https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1')
+             .then(function(response) {
+                 console.log(response.data.text);
+                 catfact = response.data.text;
+             })
         </script>
     </body>
 </html>
