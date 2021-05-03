@@ -16,30 +16,30 @@
         </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <div id="app">
-            <h1>{{greetings}}</h1>
+            <h1 v-cloak>{{greetings}}</h1>
+            <p>{{catfact}}</p>
         </div>
-        <span id="fact">
-            <p v-cloak>{{catfact}}</p>
-        </span>
     </head>
     <body>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script>
-            var vm = new Vue({
+         function getFact(){
+            axios.get('https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1')
+             .then(function(res) {
+                 console.clear();
+                 console.log(res.data.text);
+                 let result = res.data.text;
+
+             });
+        }
+             var vm = new Vue({
                 el: '#app',
                 data: {
-                    greetings: "This is the Vue.js version of the cat facts API Project"
-                    catfact = response.data.text;
-                },
-                methods: {
+                    greetings: "This is the Vue.js version of the cat facts API Project",
+                    catfact: getFact()
                 }
-            })
-            axios.get('https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1')
-             .then(function(response) {
-                 console.log(response.data.text);
-                 catfact = response.data.text;
-             })
+            });
         </script>
     </body>
 </html>
