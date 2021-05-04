@@ -7,32 +7,27 @@
                 display:none;
             }
             #app {
-                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                 text-align: center;
+                background-color: mistyrose;
             }
             html {
-                background-color: teal;
+                background-color: mistyrose;
+                border-style: dashed;
             }
         </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <div id="app">
             <h1 v-cloak>{{greetings}}</h1>
-            <p>{{catfact}}</p>
+            <h5 v-cloak><strong>These are all user submitted entries, so if they're not actual facts, refresh the page.</strong></h5>
+            <br>
+            <p v-cloak>{{catfact}}</p>
         </div>
     </head>
     <body>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <script>
-         function getFact(){
-            axios.get('https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1')
-             .then(function(res) {
-                 console.clear();
-                 console.log(res.data.text);
-                 let result = res.data.text;
-
-             });
-        }
              var vm = new Vue({
                 el: '#app',
                 data: {
@@ -40,6 +35,17 @@
                     catfact: getFact()
                 }
             });
+
+            function getFact(){
+                var api_key = "https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1"
+                axios.get(api_key)
+                .then(function(res) {
+                    console.clear();
+                    console.log(res.data.text);
+                    var result = res.data.text;
+                    vm.catfact = result;
+                });
+            }
         </script>
     </body>
 </html>
