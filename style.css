@@ -1,0 +1,12 @@
+[v-cloak]{
+    display:none;
+}
+#app {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    background-color: mistyrose;
+}
+html {
+    background-color: mistyrose;
+    border-style: dashed;
+}
