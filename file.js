@@ -1,7 +1,8 @@
 var vm = new Vue({
     el: '#app',
     data: {
-        catfact: ''
+        catfact: '',
+        submitted: false
     },
     created: function () {
         this.fetchFacts();
@@ -16,6 +17,9 @@ var vm = new Vue({
                     var result = res.data.text;
                     vm.catfact = result;
                 });
+        },
+        process: function() {
+            this.submitted = true;
         }
     }
 });

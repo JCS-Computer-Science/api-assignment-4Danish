@@ -6,7 +6,17 @@
     text-align: center;
     background-color: mistyrose;
 }
+
 html {
-    background-color: mistyrose;
+    background-color:mistyrose;
+}
+
+#catFact {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     border-style: dashed;
+    border-color: black;
+}
+
+#clickButton {
+    margin-bottom: 10px;
 }

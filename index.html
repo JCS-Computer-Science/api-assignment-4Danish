@@ -7,9 +7,10 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         <title>Vue.js API Assignment</title>
         <div id="app">
-            <h1 v-cloak class="mt-5"><u>This is the Vue.js version of the cat fact API project.</u></h1>
-            <h5 v-cloak><strong>These are all user submitted entries, so if they're not actual facts, refresh the page.</strong></h5>
-            <p id="catFact" v-cloak>{{catfact}}</p>
+            <h1 class="mt-2"><u>Vue.js: facts about cats</u></h1>
+            <h5><b>These are all user submitted entries, so if they're not actual facts, refresh the page.</b></h5>
+            <button type="submit" @click="process" class="btn-primary" id="clickButton">Generate Cat Fact</button>
+            <p id="catFact" v-if="submitted" v-cloak>{{catfact}}</p>
         </div>
     </head>
     <body>
